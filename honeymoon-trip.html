@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Our Trip">
+<meta name="format-detection" content="telephone=no">
+<title>Antonio &amp; Sophia · Europe 2026</title>
+<script>
+// Force correct scale for local file:// rendering in iOS Safari
+(function(){
+  var vp = document.querySelector('meta[name=viewport]');
+  if(vp) vp.setAttribute('content', vp.getAttribute('content'));
+  if(window.innerWidth > 500){
+    var s = document.createElement('meta');
+    s.name='viewport';
+    s.content='width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,shrink-to-fit=no,viewport-fit=cover';
+    document.head.appendChild(s);
+  }
+})();
+</script>
+<style>
+  /* iOS system fonts — no network needed for local file */
+  :root {
+    --font-body: -apple-system, 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    --font-display: 'Palatino', 'Book Antiqua', Georgia, serif;
+  }
+</style>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;height:100%}
+body{
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  min-height:100%;
+  min-height:-webkit-fill-available;
+  overscroll-behavior-y:none;
+  -webkit-overflow-scrolling:touch;
+}
+:root{
+  --gold:#C9A96E;--gold-lt:#E8D5A8;
+  --navy1:#12213a;--navy2:#1b3d5c;--navy3:#2a5f7e;
+  --bg:#f9f8f5;--bgc:#ffffff;--bgch:#f0ede6;
+  --text:#181714;--text2:#6b6860;
+  --bdr:rgba(0,0,0,0.09);--bdr2:rgba(0,0,0,0.16);
+  --sat:env(safe-area-inset-top,0px);
+  --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px);
+  --sar:env(safe-area-inset-right,0px);
+}
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#141414;--bgc:#1e1e1e;--bgch:#282828;
+    --text:#f0ede6;--text2:#8a8780;
+    --bdr:rgba(255,255,255,0.08);--bdr2:rgba(255,255,255,0.15);
+  }
+}
+.wrap{
+  height:100dvh;
+  overflow-y:scroll;
+  -webkit-overflow-scrolling:touch;
+}
+.app{
+  max-width:430px;
+  margin:0 auto;
+  padding-left:max(var(--sal),0px);
+  padding-right:max(var(--sar),0px);
+}
+
+/* HERO */
+.hero{
+  background:linear-gradient(158deg,var(--navy1) 0%,var(--navy2) 52%,var(--navy3) 100%);
+  padding-top:max(var(--sat),32px);
+  padding-bottom:42px;
+  padding-left:22px;
+  padding-right:22px;
+  position:relative;
+}
+.hero::after{
+  content:'';position:absolute;
+  bottom:-1px;left:0;right:0;
+  height:28px;background:var(--bg);
+  border-radius:24px 24px 0 0;
+}
+.eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:10px}
+.names{font-family:var(--font-display);font-size:36px;font-weight:300;color:#fff;line-height:1.1;margin-bottom:4px}
+.names em{font-style:italic;color:var(--gold-lt)}
+.route{font-size:11px;color:rgba(255,255,255,0.45);line-height:1.65;margin-bottom:22px}
+.cnt-row{display:flex;gap:8px}
+.cnt-box{flex:1;background:rgba(255,255,255,0.07);border:0.5px solid rgba(201,169,110,0.28);border-radius:12px;padding:12px 4px 10px;text-align:center}
+.cnt-n{font-family:var(--font-display);font-size:30px;font-weight:300;color:#fff;line-height:1;display:block}
+.cnt-l{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:4px}
+
+/* STATS */
+.stats{display:flex;margin:20px 16px 0;border:0.5px solid var(--bdr);border-radius:16px;background:var(--bgc);overflow:hidden}
+.stat{flex:1;padding:14px 8px;text-align:center;border-right:0.5px solid var(--bdr)}
+.stat:last-child{border-right:none}
+.sn{font-family:var(--font-display);font-size:24px;font-weight:300;color:var(--text);line-height:1;display:block}
+.sl{display:block;font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin-top:3px}
+
+/* SECTION */
+.sec{padding:22px 16px 0}
+.sec-t{font-family:var(--font-display);font-size:22px;font-weight:400;color:var(--text);margin-bottom:14px}
+.sec-t em{font-style:italic;color:var(--gold)}
+.sec-s{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--text2);margin-top:2px}
+.hr{height:1px;background:var(--bdr);margin:22px 16px 0}
+
+/* TABS */
+.tabs{
+  display:flex;gap:8px;
+  overflow-x:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding-bottom:2px;padding-left:1px;padding-right:1px;margin-bottom:14px;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex-shrink:0;min-height:44px;padding:0 16px;
+  display:flex;align-items:center;
+  border-radius:22px;font-size:12px;font-weight:500;
+  border:0.5px solid var(--bdr2);background:var(--bgc);color:var(--text2);
+  white-space:nowrap;cursor:pointer;
+  -webkit-user-select:none;user-select:none;
+  -webkit-tap-highlight-color:transparent;
+  transition:background 0.15s,color 0.15s;
+}
+.tab.on{background:var(--navy2);border-color:var(--navy2);color:#fff}
+.dloc{font-size:12px;color:var(--text2);margin-bottom:12px;padding-left:2px}
+
+/* EVENT */
+.ev{
+  background:var(--bgc);border:0.5px solid var(--bdr);
+  border-radius:16px;padding:14px 16px;margin-bottom:10px;
+  display:flex;gap:14px;align-items:flex-start;
+}
+.ev.tent{border-style:dashed}
+.evtime{min-width:48px;text-align:right;flex-shrink:0;padding-top:3px}
+.evt{font-size:12px;font-weight:500;color:var(--gold);display:block;line-height:1}
+.evap{font-size:10px;color:var(--text2);display:block;margin-top:2px}
+.evdiv{width:1px;align-self:stretch;background:var(--bdr);flex-shrink:0}
+.evb{flex:1;min-width:0}
+.badge{
+  display:inline-flex;align-items:center;
+  font-size:9px;letter-spacing:1.2px;text-transform:uppercase;font-weight:500;
+  padding:3px 8px;border-radius:8px;margin-bottom:5px;
+}
+.bf{background:#d4eaf8;color:#1a4d6e}
+.bh{background:#eddfc0;color:#7a5e2a}
+.bd{background:#f5d5d5;color:#8b3030}
+.bfe{background:#cce8d6;color:#2a6b3c}
+.ba{background:#e2dcf5;color:#4a3580}
+.bc{background:#f5d5e8;color:#7a2a5e}
+.bt{background:#e8e8e8;color:#777}
+.evname{
+  font-family:var(--font-display);
+  font-size:18px;font-weight:400;color:var(--text);
+  line-height:1.2;margin-bottom:3px;
+}
+.evd{font-size:12px;color:var(--text2);line-height:1.55;white-space:pre-line}
+.evc{font-size:11px;color:var(--text2);margin-top:4px;font-style:italic;white-space:pre-line;line-height:1.5}
+
+/* BUTTONS — 44pt min tap target per HIG */
+.acts{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.abtn{
+  display:inline-flex;align-items:center;gap:5px;
+  min-height:44px;padding:0 14px;
+  border-radius:22px;border:0.5px solid var(--bdr2);background:var(--bgch);
+  color:var(--text);text-decoration:none;
+  font-family:var(--font-body);font-size:12px;font-weight:500;
+  white-space:nowrap;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity 0.1s;
+}
+.abtn:active{opacity:0.55}
+.abtn svg{width:13px;height:13px;flex-shrink:0}
+.amap{color:#2563a8}
+.aapp{color:#7a5e2a}
+.ahyatt{color:#2a6b47}
+.abook{color:#4a3580}
+
+/* RESERVATIONS */
+.rgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rcard{
+  background:var(--bgc);border:0.5px solid var(--bdr);
+  border-radius:16px;padding:14px;
+  text-decoration:none;display:block;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity 0.1s;
+}
+.rcard:active{opacity:0.6}
+.ric{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
+.rh{background:#eddfc0}.rf{background:#d4eaf8}.rfe{background:#cce8d6}.ra{background:#e2dcf5}.rc{background:#f5d5e8}
+.rn{font-size:13px;font-weight:500;color:var(--text);margin-bottom:3px;line-height:1.3}
+.rc2{font-size:11px;color:var(--text2);line-height:1.4}
+
+/* QUICK MAPS */
+.qrow{
+  display:flex;gap:10px;
+  overflow-x:scroll;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+  padding:0 16px;
+}
+.qrow::-webkit-scrollbar{display:none}
+.qi{flex-shrink:0;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.qic{width:56px;height:56px;border-radius:16px;border:0.5px solid var(--bdr);background:var(--bgc);display:flex;align-items:center;justify-content:center;font-size:24px;transition:opacity 0.1s}
+.qi:active .qic{opacity:0.55}
+.ql{font-size:10px;color:var(--text2);text-align:center;white-space:nowrap}
+
+.spacer{height:calc(max(var(--sab),16px) + 32px)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="app">
+
+<div class="hero">
+  <div class="eyebrow">🇬🇷 Greece · Spain 🇪🇸 · Honeymoon 2026</div>
+  <div class="names">Antonio &amp; <em>Sophia</em></div>
+  <div class="route">May 19 – June 1<br>Newark → Athens → Santorini → Mykonos → Athens → Madrid → Newark</div>
+  <div class="cnt-row">
+    <div class="cnt-box"><span class="cnt-n" id="cd">--</span><span class="cnt-l">Days</span></div>
+    <div class="cnt-box"><span class="cnt-n" id="ch">--</span><span class="cnt-l">Hours</span></div>
+    <div class="cnt-box"><span class="cnt-n" id="cm">--</span><span class="cnt-l">Mins</span></div>
+    <div class="cnt-box"><span class="cnt-n" id="cs">--</span><span class="cnt-l">Secs</span></div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><span class="sn">14</span><span class="sl">Nights</span></div>
+  <div class="stat"><span class="sn">4</span><span class="sl">Cities</span></div>
+  <div class="stat"><span class="sn">5</span><span class="sl">Flights</span></div>
+  <div class="stat"><span class="sn">2</span><span class="sl">Ferries</span></div>
+</div>
+
+<div class="sec">
+  <div class="sec-t">Itinerary <em>by day</em></div>
+  <div class="tabs" id="tabs"></div>
+  <div class="dloc" id="dloc"></div>
+  <div id="devents"></div>
+</div>
+
+<div class="hr"></div>
+
+<div class="sec">
+  <div style="margin-bottom:14px">
+    <div class="sec-t">Reservations</div>
+    <div class="sec-s">tap to open booking app</div>
+  </div>
+  <div class="rgrid">
+    <a class="rcard" href="https://www.united.com"><div class="ric rf">✈️</div><div class="rn">UA124 · EWR → ATH</div><div class="rc2">United · May 19<br>Sophia's account</div></a>
+    <a class="rcard" href="https://worldofhyatt.com/trips"><div class="ric rh">🏨</div><div class="rn">Santorini Sky</div><div class="rc2">World of Hyatt<br>#589336842P</div></a>
+    <a class="rcard" href="https://www.ferryhopper.com"><div class="ric rfe">⛴️</div><div class="rn">Seajets · SNT → MYK</div><div class="rc2">Ferryhopper<br>#7736QPYWP</div></a>
+    <a class="rcard" href="https://www.expedia.com"><div class="ric rh">🏨</div><div class="rn">Nissaki Boutique</div><div class="rc2">Expedia<br>#72068740459942</div></a>
+    <a class="rcard" href="https://www.ferryhopper.com"><div class="ric rfe">⛴️</div><div class="rn">Blue Star · MYK → ATH</div><div class="rc2">Ferryhopper<br>#306319086</div></a>
+    <a class="rcard" href="https://worldofhyatt.com/trips"><div class="ric rh">🏨</div><div class="rn">Grand Hyatt Athens</div><div class="rc2">World of Hyatt<br>Antonio's account</div></a>
+    <a class="rcard" href="https://www.viator.com"><div class="ric ra">🚌</div><div class="rn">Hop-On Hop-Off Bus</div><div class="rc2">Viator<br>#ISAHL5UTG</div></a>
+    <a class="rcard" href="https://www.viator.com/account/bookings"><div class="ric ra">🍽️</div><div class="rn">Athens Food Tour</div><div class="rc2">Viator<br>#1377723743</div></a>
+    <a class="rcard" href="https://stubhub.com"><div class="ric rc">🎵</div><div class="rn">Bad Bunny · Madrid</div><div class="rc2">StubHub<br>Sfeijoo15 acct</div></a>
+  </div>
+</div>
+
+<div class="hr"></div>
+
+<div class="sec" style="padding-bottom:14px">
+  <div class="sec-t" style="margin-bottom:14px">Quick <em>maps</em></div>
+</div>
+<div class="qrow">
+  <a class="qi" href="maps://maps.apple.com/?daddr=Athinios+Port+Santorini+Greece&dirflg=d"><div class="qic">⚓</div><div class="ql">Athinios Port</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Oia+Santorini+Greece&dirflg=d"><div class="qic">🌅</div><div class="ql">Oia Village</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Mykonos+New+Port+Greece&dirflg=d"><div class="qic">🛳️</div><div class="ql">Mykonos Port</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Acropolis+of+Athens+Greece&dirflg=d"><div class="qic">🏛️</div><div class="ql">Acropolis</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Port+of+Piraeus+Greece&dirflg=d"><div class="qic">⚓</div><div class="ql">Piraeus Port</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Athinas+7+Athens+Greece&dirflg=d"><div class="qic">🥗</div><div class="ql">Food Tour Meet</div></a>
+  <a class="qi" href="maps://maps.apple.com/?daddr=Puerta+del+Sol+Madrid+Spain&dirflg=d"><div class="qic">🇪🇸</div><div class="ql">Madrid Center</div></a>
+</div>
+
+<div class="spacer"></div>
+</div>
+</div>
+
+<script>
+'use strict';
+const M='maps://maps.apple.com/?daddr=',H='https://worldofhyatt.com/trips';
+const PIN=`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.5C5.51 1.5 3.5 3.51 3.5 6c0 3.75 4.5 8.5 4.5 8.5s4.5-4.75 4.5-8.5c0-2.49-2.01-4.5-4.5-4.5z"/><circle cx="8" cy="6" r="1.5"/></svg>`;
+const EXT=`<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="12" height="12" rx="2.5"/><path d="M5.5 10.5l5-5M7.5 5.5h3v3"/></svg>`;
+
+const days=[
+  {tab:'May 19',loc:'✈️ Depart Newark',events:[
+    {t:'4:00',ap:'PM',b:'bf',bl:'Flight',name:'UA124 · Newark → Athens',d:'United Airlines · Economy Plus\nSeats 33J (Antonio) 33K (Sophia)',c:"Sophia's United account",m:M+'Newark+Liberty+International+Airport&dirflg=d',ml:'To EWR',app:'https://www.united.com',al:'United App'},
+  ]},
+  {tab:'May 20',loc:'🛬 Arrive Athens → Santorini',events:[
+    {t:'8:10',ap:'AM',b:'bf',bl:'Arrive ATH',name:'Arrive Athens International',d:'UA124 lands · Clear customs\nConnect to Aegean A3354',c:'',m:M+'Athens+International+Airport+Greece&dirflg=d',ml:'ATH Airport',app:'https://www.united.com',al:'United App'},
+    {t:'10:05',ap:'AM',b:'bf',bl:'Flight',name:'A3354 · Athens → Santorini',d:'Aegean Airlines · Arrives JTR 10:55 AM\n~50 min flight',c:"Sophia's United itinerary",m:M+'Athens+International+Airport+Greece&dirflg=d',ml:'To gate',app:'https://www.aegeanair.com',al:'Aegean Air'},
+    {t:'3:00',ap:'PM',b:'bh',bl:'Check-in',name:'Santorini Sky · Retreat Suite',d:'Hyatt · Climate fee €2/night\nNearest port: Athinios',c:"Hyatt #589336842P · Antonio's account",m:M+'Santorini+Sky+Hotel+Greece&dirflg=d',ml:'Navigate there',app:H,al:'World of Hyatt',hyatt:true},
+  ]},
+  {tab:'May 21',loc:'🌊 Santorini — Day 2',events:[
+    {t:'7:00',ap:'PM',b:'bd',bl:'Dinner',name:'Rizes Restaurant',d:'Fira, Santorini · Confirmed via OpenTable',c:'OpenTable reservation',m:M+'Rizes+Restaurant+Fira+Santorini&dirflg=d',ml:'Directions',app:'https://www.opentable.com',al:'OpenTable'},
+  ]},
+  {tab:'May 22',loc:'🌊 Santorini — Day 3',events:[
+    {t:'7:00',ap:'PM',b:'bd',bl:'Dinner',name:'Ammoudi Bay Restaurant',d:'Oia, Santorini · Confirmed reservation',c:'Ref: AMMS.235506463B',m:M+'Ammoudi+Bay+Oia+Santorini+Greece&dirflg=d',ml:'Navigate to Oia',app:'https://www.opentable.com',al:'OpenTable'},
+  ]},
+  {tab:'May 23',loc:'⛴️ Santorini → Mykonos',events:[
+    {t:'9:50',ap:'AM',b:'bfe',bl:'Ferry',name:'Seajets · Champions League Jet 2',d:'Athinios Port → Mykonos New Port\n2h 50m · VIP Platinum',c:'Ferryhopper · #7736QPYWP\nCheck in before departure',m:M+'Athinios+Port+Santorini+Greece&dirflg=d',ml:'To Athinios Port',app:'https://www.ferryhopper.com',al:'Ferryhopper'},
+    {t:'12:40',ap:'PM',b:'bfe',bl:'Arrive',name:'Arrive Mykonos New Port',d:'Transfer to Nissaki Boutique Hotel\nPlatis Gialos Beach',c:'',m:M+'Mykonos+New+Port+Greece&dirflg=d',ml:'Mykonos Port',app:null},
+    {t:'2:00',ap:'PM',b:'bh',bl:'Check-in',name:'Nissaki Boutique Hotel',d:'Platis Gialos Beach, Mykonos',c:"Expedia #72068740459942 · Antonio's account",m:M+'Nissaki+Boutique+Hotel+Mykonos+Greece&dirflg=d',ml:'Navigate there',app:'https://www.expedia.com',al:'Expedia App'},
+  ]},
+  {tab:'May 24',loc:'🏝️ Mykonos — Day 2',events:[
+    {t:'7:00',ap:'PM',b:'bd',bl:'Dinner',name:'Zuma Mykonos',d:'Mykonos Town · Confirmed at 7:00 PM',c:'Confirmed reservation',m:M+'Zuma+Mykonos+Greece&dirflg=d',ml:'Directions',app:'https://www.zumarestaurant.com',al:'Zuma'},
+  ]},
+  {tab:'May 25',loc:'🏝️ Mykonos — Day 3',events:[
+    {t:'TBD',ap:'',b:'bt',bl:'First come first served',name:'Nassos Beach Club',d:'Mykonos · No reservation · Arrive early for best spots',c:'Walk-in · Will attend',m:M+'Mykonos+Greece&dirflg=d',ml:'Mykonos map',app:null,tent:true},
+  ]},
+  {tab:'May 26',loc:'⛴️ Mykonos → Athens',events:[
+    {t:'8:00',ap:'AM',b:'bfe',bl:'Ferry',name:'Blue Star Myconos',d:'Mykonos New Port → Port of Piraeus\n2-Bed Window Cabin · ~4h 50m',c:'Reservation #306319086\nCheck in 48–2 hrs before departure',m:M+'Mykonos+New+Port+Greece&dirflg=d',ml:'To Mykonos Port',app:'https://www.ferryhopper.com',al:'Ferryhopper'},
+    {t:'12:50',ap:'PM',b:'bfe',bl:'Arrive',name:'Arrive Port of Piraeus',d:'Transfer to Grand Hyatt Athens',c:'',m:M+'Port+of+Piraeus+Greece&dirflg=d',ml:'Piraeus Port',app:null},
+    {t:'3:00',ap:'PM',b:'bh',bl:'Check-in',name:'Grand Hyatt Athens',d:'1 King Bed · Climate fee €15/night (~€45 total)',c:"World of Hyatt · Antonio's account",m:M+'Grand+Hyatt+Athens+Greece&dirflg=d',ml:'Navigate there',app:H,al:'World of Hyatt',hyatt:true},
+    {t:'7:00',ap:'PM',b:'bd',bl:'Dinner',name:"Dionysos Zonar's",d:'Near Acropolis of Athens · Classic Greek dining',c:'',m:M+"Dionysos+Zonar's+Athens+Greece&dirflg=d",ml:'Directions',app:null},
+  ]},
+  {tab:'May 27',loc:'🏛️ Athens — Day 2',events:[
+    {t:'All day',ap:'',b:'ba',bl:'Activity',name:'Hop-On Hop-Off Bus',d:'City Sightseeing Athens · 2 Adults · isango!\nLight use today',c:'Viator · #ISAHL5UTG · Free cancel 24hrs before',m:M+'Syntagma+Square+Athens+Greece&dirflg=d',ml:'Start point',app:'https://www.viator.com',al:'Viator App'},
+    {t:'5:00',ap:'PM',b:'ba',bl:'Food Tour',name:'Athens Evening Food Tour',d:'Small group max 12 · Truevoyagers · English guide\nMeet at MAKARON Lonis, Athinas 7',c:'Viator #1377723743 · Operator: VIA-87735346\n$218.70 · 2 adults · Free cancel before 5 PM May 26',m:M+'Athinas+7+Athens+Greece&dirflg=d',ml:'Meeting point',app:'https://www.viator.com/account/bookings',al:'Viator'},
+  ]},
+  {tab:'May 28',loc:'🏛️ Athens — Day 3',events:[
+    {t:'All day',ap:'',b:'ba',bl:'Activity',name:'Hop-On Hop-Off Bus · Main day',d:'City Sightseeing Athens · Full day\nSame ticket #ISAHL5UTG',c:'Viator · #ISAHL5UTG',m:M+'Syntagma+Square+Athens+Greece&dirflg=d',ml:'Start point',app:'https://www.viator.com',al:'Viator App'},
+    {t:'TBD',ap:'',b:'ba',bl:'Audio Tour',name:'Acropolis & Ancient Athens',d:'Parthenon · Roman Agora\nTemple of Olympian Zeus · Acropolis Museum',c:'⚠️ Not yet booked — book via Viator',m:M+'Acropolis+of+Athens+Greece&dirflg=d',ml:'To Acropolis',app:'https://www.viator.com',al:'Book on Viator',book:true},
+  ]},
+  {tab:'May 29',loc:'✈️ Athens → Madrid',events:[
+    {t:'9:10',ap:'AM',b:'bf',bl:'Flight',name:'A3700 · Athens → Madrid',d:'Aegean Airlines · Airbus A321neo · ComfortFlex\nSeats 6D (Antonio) 6E (Sophia)',c:"Ref: 75Y9AS · 1 checked bag each 23kg\nSophia's booking",m:M+'Athens+International+Airport+Greece&dirflg=d',ml:'To ATH airport',app:'https://www.aegeanair.com',al:'Aegean Air'},
+    {t:'12:00',ap:'PM',b:'bf',bl:'Arrive',name:'Arrive Madrid Barajas (MAD)',d:"Hotel TBD — booked by Sophia's family",c:'',m:M+'Adolfo+Suarez+Madrid+Barajas+Airport+Spain&dirflg=d',ml:'MAD Airport',app:null},
+  ]},
+  {tab:'May 30',loc:'🇪🇸 Madrid — Day 2',events:[
+    {t:'TBD',ap:'',b:'bc',bl:'Concert',name:'Bad Bunny · Madrid',d:'Venue TBD · Madrid, Spain',c:'StubHub · Account: Sfeijoo15@gmail.com',m:M+'Madrid+Spain&dirflg=d',ml:'Madrid center',app:'https://www.stubhub.com',al:'StubHub'},
+  ]},
+  {tab:'Jun 1',loc:'✈️ Madrid → Home',events:[
+    {t:'10:50',ap:'AM',b:'bf',bl:'Flight',name:'UA50 · Madrid → Newark',d:'United Airlines · Seats 39A (Sophia) 39B (Antonio)',c:"Confirmation: M3BPX8 · Sophia's United account",m:M+'Adolfo+Suarez+Madrid+Barajas+Airport+Spain&dirflg=d',ml:'To MAD airport',app:'https://www.united.com',al:'United App'},
+    {t:'1:15',ap:'PM',b:'bf',bl:'Arrive Home',name:'Arrive Newark Liberty (EWR)',d:'Welcome home, Mr. & Mrs. ❤️',c:'',m:M+'Newark+Liberty+International+Airport&dirflg=d',ml:'EWR',app:null},
+  ]},
+];
+
+function evHTML(e){
+  const ac=e.hyatt?'ahyatt':e.book?'abook':'aapp';
+  return `<div class="ev${e.tent?' tent':''}">
+    <div class="evtime"><span class="evt">${e.t}</span><span class="evap">${e.ap}</span></div>
+    <div class="evdiv"></div>
+    <div class="evb">
+      <div class="badge ${e.b}">${e.bl}</div>
+      <div class="evname">${e.name}</div>
+      <div class="evd">${e.d}</div>
+      ${e.c?`<div class="evc">${e.c}</div>`:''}
+      <div class="acts">
+        <a class="abtn amap" href="${e.m}">${PIN} ${e.ml}</a>
+        ${e.app?`<a class="abtn ${ac}" href="${e.app}">${EXT} ${e.al}</a>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+
+const tabsEl=document.getElementById('tabs');
+const dlocEl=document.getElementById('dloc');
+const devEl=document.getElementById('devents');
+
+function showDay(i){
+  document.querySelectorAll('.tab').forEach((t,j)=>t.classList.toggle('on',j===i));
+  dlocEl.textContent=days[i].loc;
+  devEl.innerHTML=days[i].events.map(evHTML).join('');
+}
+
+days.forEach((d,i)=>{
+  const t=document.createElement('div');
+  t.className='tab'+(i===0?' on':'');
+  t.textContent=d.tab;
+  t.addEventListener('click',()=>showDay(i));
+  tabsEl.appendChild(t);
+});
+showDay(0);
+
+function tick(){
+  const diff=new Date('2026-05-19T16:00:00-04:00')-Date.now();
+  const pad=n=>String(Math.floor(Math.max(0,n))).padStart(2,'0');
+  document.getElementById('cd').textContent=pad(diff/86400000);
+  document.getElementById('ch').textContent=pad(diff%86400000/3600000);
+  document.getElementById('cm').textContent=pad(diff%3600000/60000);
+  document.getElementById('cs').textContent=pad(diff%60000/1000);
+}
+tick();setInterval(tick,1000);
+</script>
+</body>
+</html>
